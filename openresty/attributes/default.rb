@@ -6,7 +6,7 @@ default[:openresty][:user] = 'openresty'
 # source code URL 
 default[:openresty][:ver_num] = '1.4.3.1'
 default[:openresty][:url_path] = 'http://openresty.org/download/'
-default[:openresty][:file_name] = 'ngx_openresty-#{default[:openresty][:source_ver_num]}.tar.gz'
+default[:openresty][:file_name] = 'ngx_openresty-1.4.3.1.tar.gz'
 
 # redis-server install path
 #default[:openresty][:server_install_path] = '/usr/local/bin/openresty-server'
