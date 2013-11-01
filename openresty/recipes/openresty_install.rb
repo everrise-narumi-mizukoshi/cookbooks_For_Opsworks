@@ -4,21 +4,21 @@
 #
 #
 # 作業用ディレクトリの作成 
-directory node['openresty']['work_dir'] do
+directory node[:openresty][:work_dir] do
   owner 'root'
   group 'root'
   mode '0755'
 end
 
-directory node[:nginx][:log_dir] do
+directory node[:openresty][:log_dir] do
   mode 0755
-  owner node[:nginx][:user]
+  owner node[:openresty][:user]
   action :create
 end
 
 # 最新のソースコードを取得 
 remote_file node['openresty']['work_dir'] + node['openresty']['source_file_name'] do
-  source node['openresty']['source_url_path'] + node['openresty']['source_file_name']
+  source node['openresty']['source_url'] + node['openresty']['source_file_name']
 end
 
 # ソースコードのアーカイブを展開して make && make test && make install
@@ -30,7 +30,7 @@ bash "install openresty" do
     cd #{::File.basename(node['openresty']['source_file_name']), '.tar.gz')} 
     ./configure --with-luajit
     make
-    make install)
+    make install
   EOH
 end
 
