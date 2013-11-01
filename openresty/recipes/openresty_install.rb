@@ -18,7 +18,7 @@ end
 
 # 最新のソースコードを取得 
 remote_file node['openresty']['work_dir'] + node['openresty']['source_file_name'] do
-  source node['openresty']['source_url'] + node['openresty']['source_file_name']
+  source node['openresty']['source_url_path'] + node['openresty']['source_file_name']
 end
 
 # ソースコードのアーカイブを展開して make && make test && make install
