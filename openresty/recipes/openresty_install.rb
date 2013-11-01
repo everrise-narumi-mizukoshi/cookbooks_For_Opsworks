@@ -10,14 +10,19 @@ directory node['openresty']['work_dir'] do
   mode '0755'
 end
 
+directory node[:nginx][:log_dir] do
+  mode 0755
+  owner node[:nginx][:user]
+  action :create
+end
+
 # 最新のソースコードを取得 
 remote_file node['openresty']['work_dir'] + node['openresty']['source_file_name'] do
   source node['openresty']['source_url_path'] + node['openresty']['source_file_name']
-  not_if "ls #{node['openresty']['server_install_path']}"
 end
 
 # ソースコードのアーカイブを展開して make && make test && make install
-bash "install_openresty_program" do
+bash "install openresty" do
   user "root"
   cwd "node['openresty']['work_dir']"
   code <<-EOH
@@ -27,7 +32,6 @@ bash "install_openresty_program" do
     make
     make install)
   EOH
-  not_if "ls #{node['openresty']['server_install_path']"
 end
 
 # サービスを起動する
