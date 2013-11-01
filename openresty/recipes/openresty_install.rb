@@ -17,17 +17,17 @@ directory node[:openresty][:log_dir] do
 end
 
 # 最新のソースコードを取得 
-remote_file node['openresty']['work_dir'] + node['openresty']['source_file_name'] do
-  source node['openresty']['source_url_path'] + node['openresty']['source_file_name']
+remote_file node[:openresty][:work_dir] + node[:openresty][:file_name] do
+  source node[:openresty][:url_path] + node[:openresty][:file_name]
 end
 
 # ソースコードのアーカイブを展開して make && make test && make install
 bash "install openresty" do
   user "root"
-  cwd "node['openresty']['work_dir']"
+  cwd "node[:openresty][:work_dir]"
   code <<-EOH
-    tar xzf #{node['openresty']['source_file_name']}
-    cd #{::File.basename(node['openresty']['source_file_name'], '.tar.gz')} 
+    tar xzf #{node[:openresty][:file_name]}
+    cd #{::File.basename(node[:openresty][:file_name], '.tar.gz')} 
     ./configure --with-luajit
     make
     make install
