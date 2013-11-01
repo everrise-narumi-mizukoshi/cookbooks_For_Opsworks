@@ -1,11 +1,11 @@
-# ì‹Æ—pƒfƒBƒŒƒNƒgƒŠ 
+# ä½œæ¥­ç”¨ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª 
 default[:openresty][:work_dir] = '/etc/openresty'
 default[:openresty][:log_dir] = '/var/log/openresty'
 
-# ƒ\[ƒXƒR[ƒh‚Ì URL 
+# ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã® URL 
 default[:openresty][:source_ver_num] = '1.4.3.1'
 default[:openresty][:source_url_path] = "http://agentzh.org/misc/nginx/"
 default[:openresty][:source_file_name] = 'ngx_openresty-#{default['openresty']['source_ver_num']}.tar.gz'
 
-# redis-server ‚ÌƒCƒ“ƒXƒg[ƒ‹ƒpƒX
+# redis-server ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ãƒ‘ã‚¹
 default[:openresty][:server_install_path] = '/usr/local/bin/openresty-server'

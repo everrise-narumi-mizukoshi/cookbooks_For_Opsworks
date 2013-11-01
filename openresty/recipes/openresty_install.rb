@@ -3,7 +3,7 @@
 # Recipe:: default
 #
 #
-# ì‹Æ—pƒfƒBƒŒƒNƒgƒŠ‚Ìì¬ 
+# ä½œæ¥­ç”¨ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ä½œæˆ 
 directory node['openresty']['work_dir'] do
   owner 'root'
   group 'root'
@@ -16,12 +16,12 @@ directory node[:nginx][:log_dir] do
   action :create
 end
 
-# ÅV‚Ìƒ\[ƒXƒR[ƒh‚ðŽæ“¾ 
+# æœ€æ–°ã®ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’å–å¾— 
 remote_file node['openresty']['work_dir'] + node['openresty']['source_file_name'] do
   source node['openresty']['source_url_path'] + node['openresty']['source_file_name']
 end
 
-# ƒ\[ƒXƒR[ƒh‚ÌƒA[ƒJƒCƒu‚ð“WŠJ‚µ‚Ä make && make test && make install
+# ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã®ã‚¢ãƒ¼ã‚«ã‚¤ãƒ–ã‚’å±•é–‹ã—ã¦ make && make test && make install
 bash "install openresty" do
   user "root"
   cwd "node['openresty']['work_dir']"
@@ -34,7 +34,7 @@ bash "install openresty" do
   EOH
 end
 
-# ƒT[ƒrƒX‚ð‹N“®‚·‚é
+# ã‚µãƒ¼ãƒ“ã‚¹ã‚’èµ·å‹•ã™ã‚‹
 service "openresty" do
   supports :status => true, :restart => true, :reload => true
   action :start
