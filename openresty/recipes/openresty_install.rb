@@ -27,7 +27,7 @@ bash "install openresty" do
   cwd "node['openresty']['work_dir']"
   code <<-EOH
     tar xzf #{node['openresty']['source_file_name']}
-    cd #{::File.basename(node['openresty']['source_file_name']), '.tar.gz')} 
+    cd #{::File.basename(node['openresty']['source_file_name'], '.tar.gz')} 
     ./configure --with-luajit
     make
     make install
