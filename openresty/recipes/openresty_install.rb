@@ -1,3 +1,8 @@
+#
+# Cookbook Name:: openresty
+# Recipe:: default
+#
+#
 # 作業用ディレクトリの作成 
 directory node['openresty']['work_dir'] do
   action :create
@@ -11,12 +16,13 @@ remote_file node['openresty']['work_dir'] + node['openresty']['source_file_name'
 end
 
 # ソースコードのアーカイブを展開して make && make test && make install
-bash "install_redis_program" do
+bash "install_openresty_program" do
   user "root"
   cwd "node['openresty']['work_dir']"
   code <<-EOH
-    tar -zxf #{node['openresty']['source_file_name']}
-    cd #{::File.basename(node['openresty']['source_file_name']), '.tar.gz' 
+    tar xzf #{node['openresty']['source_file_name']}
+    cd #{::File.basename(node['openresty']['source_file_name']), '.tar.gz')} 
+    ./configure --with-luajit
     make
     make install)
   EOH
@@ -24,11 +30,7 @@ bash "install_redis_program" do
 end
 
 # サービスを起動する
-bash "start_openresty-server" do
-  user "root"
-  cwd "/usr/local/bin"
-  code <<-EOH
-    #{node['openresty']['server_install_path'] &
-  EOH
-  not_if "ps aux | grep \[r\]openresty-server"
+service "openresty" do
+  supports :status => true, :restart => true, :reload => true
+  action :nothing
 end
