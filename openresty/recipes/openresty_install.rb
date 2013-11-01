@@ -5,8 +5,9 @@
 #
 # 作業用ディレクトリの作成 
 directory node['openresty']['work_dir'] do
-  action :create
-  not_if "ls -d #{node['openresty']['work_dir']}"
+  owner 'root'
+  group 'root'
+  mode '0755'
 end
 
 # 最新のソースコードを取得 
@@ -32,5 +33,5 @@ end
 # サービスを起動する
 service "openresty" do
   supports :status => true, :restart => true, :reload => true
-  action :nothing
+  action :start
 end
