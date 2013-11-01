@@ -22,7 +22,7 @@ remote_file node[:openresty][:work_dir] + node[:openresty][:file_name] do
 end
 
 # ソースコードのアーカイブを展開して make && make test && make install
-bash "install openresty" do
+bash 'install openresty' do
   user "root"
   cwd "node[:openresty][:work_dir]"
   code <<-EOH
