@@ -3,7 +3,7 @@
 # Recipe:: pcre
 #
 
-include_recipe 'build-essential'
+#include_recipe 'build-essential'
 
 # For pcregrep-libbz2
 case node['platform_family']
@@ -19,14 +19,14 @@ pcre_src_filename = ::File.basename(node['pcre']['file'])
 pcre_src_filepath = "#{Chef::Config['file_cache_path']}/#{pcre_src_filename}"
 pcre_extract_path = "#{Chef::Config['file_cache_path']}/openresty-#{node['pcre']['version']}"
 
-node.run_state['pcre_configure_flags'] = [
-  '--enable-pcregrep-libz',
-  '--enable-pcregrep-libbz2',
-  '--enable-newline-is-anycrlf'
-]
+#node.run_state['pcre_configure_flags'] = [
+#  '--enable-pcregrep-libz',
+#  '--enable-pcregrep-libbz2',
+#  '--enable-newline-is-anycrlf'
+#]
 
-node.run_state['pcre_configure_flags'] |= [ '--enable-unicode-properties', '--enable-utf' ] if node['pcre']['enable_utf8']
-node.run_state['pcre_configure_flags'] |= [ '--enable-jit' ] if node['pcre']['enable_jit']
+#node.run_state['pcre_configure_flags'] |= [ '--enable-unicode-properties', '--enable-utf' ] if node['pcre']['enable_utf8']
+#node.run_state['pcre_configure_flags'] |= [ '--enable-jit' ] if node['pcre']['enable_jit']
 
 # create directory 
 directory '/etc/pcre/' do
