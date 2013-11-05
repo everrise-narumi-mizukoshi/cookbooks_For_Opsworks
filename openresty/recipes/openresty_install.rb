@@ -4,7 +4,7 @@
 #
 #
 # 作業用ディレクトリの作成 
-directory node[:openresty][:work_dir] do
+directory '/etc/openresty' do
   owner 'root'
   group 'root'
   mode '0755'
