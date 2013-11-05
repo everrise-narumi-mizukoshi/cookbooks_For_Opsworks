@@ -6,6 +6,7 @@
 
 openresty_src_filename = ::File.basename(node[:openresty][:file_name])
 openresty_src_filepath = "#{Chef::Config['file_cache_path']}/#{openresty_src_filename}"
+openresty_extract_path = "#{Chef::Config['file_cache_path']}/openresty-#{node['openresty']['ver_num']}"
 
 # create directory 
 directory '/etc/openresty/' do
@@ -31,8 +32,10 @@ bash 'install openresty' do
   user 'root'
     cwd ::File.dirname(openresty_src_filename)
     code <<-EOH
-    tar xzf #{node[:openresty][:new_file_name]}
-    cd #{::File.basename(node[:openresty][:file_name], '.tar.gz')} 
+    mkdir -p #{openresty_extract_path}
+    tar xzf #{openresty_src_filename} -C #{openresty_extract_path}
+    cd openresty-#{node['openresty']['ver_num']}/#{::File.basename(node[:openresty][:file_name], '.tar.gz')} 
+    cd luajit-#{node['nginx']['luajit']['version']}/LuaJIT-#{node['nginx']['luajit']['version']}
     ./configure --with-luajit
     make
     make install
