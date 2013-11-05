@@ -27,6 +27,8 @@ remote_file node[:openresty][:work_dir] + node[:openresty][:file_name] do
   source node[:openresty][:url_path] + node[:openresty][:file_name]
 end
   
+include_recipe 'openresty::pcre'
+
 # open archive of source-code make && make test && make install
 bash 'install openresty' do
   user 'root'
