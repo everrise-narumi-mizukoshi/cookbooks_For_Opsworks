@@ -24,8 +24,8 @@ end
 
 # ソースコードのアーカイブを展開して make && make test && make install
 bash 'install openresty' do
-  user "root"
-  cwd "node[:openresty][:work_dir]"
+  user 'root'
+  cwd '/etc/openresty'
   code <<-EOH
     tar xzf #{node[:openresty][:file_name]}
     cd #{::File.basename(node[:openresty][:file_name], '.tar.gz')} 
@@ -36,7 +36,7 @@ bash 'install openresty' do
 end
 
 # サービスを起動する
-service "openresty" do
+service 'openresty' do
   supports :status => true, :restart => true, :reload => true
   action :start
 end
