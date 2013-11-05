@@ -4,6 +4,8 @@
 #
 #
 
+include_recipe 'chef-pcre-master'
+
 openresty_src_filename = ::File.basename(node[:openresty][:file_name])
 openresty_src_filepath = "#{Chef::Config['file_cache_path']}/#{openresty_src_filename}"
 openresty_extract_path = "#{Chef::Config['file_cache_path']}/openresty-#{node[:openresty][:ver_num]}"
@@ -26,8 +28,6 @@ end
 remote_file node[:openresty][:work_dir] + node[:openresty][:file_name] do
   source node[:openresty][:url_path] + node[:openresty][:file_name]
 end
-  
-include_recipe 'chef-pcre-master'
 
 # open archive of source-code make && make test && make install
 bash 'install openresty' do
