@@ -33,8 +33,8 @@ bash 'install openresty' do
   cwd ::File.dirname(openresty_src_filename)
   code <<-EOH
     wget #{node[:openresty][:url_path] + node[:openresty][:file_name]}
-    tar -zxf #{openresty_src_filename} -C #{openresty_extract_path}
-    cd openresty-#{node[:openresty][:ver_num]}/#{::File.basename(node[:openresty][:file_name], '.tar.gz')} 
+    tar -zxf #{node[:openresty][:file_name]}
+    cd #{::File.basename(node[:openresty][:file_name], '.tar.gz')} 
     ./configure --with-luajit
     make && make install
   EOH
