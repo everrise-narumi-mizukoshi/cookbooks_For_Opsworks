@@ -10,11 +10,11 @@ directory node[:openresty][:work_dir] do
   mode '0755'
 end
 
-directory node[:openresty][:log_dir] do
-  mode 0755
-  owner node[:openresty][:user]
-  action :create
-end
+#directory node[:openresty][:log_dir] do
+#  mode 0755
+#  owner node[:openresty][:user]
+#  action :create
+#end
 
 # 最新のソースコードを取得 
 remote_file node[:openresty][:work_dir] + node[:openresty][:file_name] do

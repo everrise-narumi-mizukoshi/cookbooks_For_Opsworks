@@ -1,6 +1,6 @@
 # work dir.
 default[:openresty][:work_dir] = '/etc/openresty'
-default[:openresty][:log_dir] = '/var/log/openresty'
+#default[:openresty][:log_dir] = '/var/log/openresty'
 default[:openresty][:user] = 'openresty'
 
 # source code URL 
