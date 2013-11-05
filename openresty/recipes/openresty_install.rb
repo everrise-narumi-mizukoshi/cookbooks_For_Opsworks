@@ -32,9 +32,8 @@ bash 'install openresty' do
   user 'root'
   cwd ::File.dirname(openresty_src_filename)
   code <<-EOH
-    mkdir -p #{openresty_extract_path}
-    cd ::File.dirname(openresty_src_filename)
-    tar xzf #{openresty_src_filename} -C #{openresty_extract_path}
+    wget #{node[:openresty][:url_path] + node[:openresty][:file_name]}
+    tar -zxf #{openresty_src_filename} -C #{openresty_extract_path}
     cd openresty-#{node[:openresty][:ver_num]}/#{::File.basename(node[:openresty][:file_name], '.tar.gz')} 
     ./configure --with-luajit
     make && make install
