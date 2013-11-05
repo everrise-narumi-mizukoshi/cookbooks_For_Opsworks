@@ -6,7 +6,7 @@
 
 openresty_src_filename = ::File.basename(node[:openresty][:file_name])
 openresty_src_filepath = "#{Chef::Config['file_cache_path']}/#{openresty_src_filename}"
-openresty_extract_path = "#{Chef::Config['file_cache_path']}/openresty-#{node['openresty']['ver_num']}"
+openresty_extract_path = "#{Chef::Config['file_cache_path']}/openresty-#{node[:openresty][:ver_num]}"
 
 # create directory 
 directory '/etc/openresty/' do
@@ -27,14 +27,14 @@ remote_file node[:openresty][:work_dir] + node[:openresty][:file_name] do
   source node[:openresty][:url_path] + node[:openresty][:file_name]
 end
   
-# ソースコードのアーカイブを展開して make && make test && make install
+# open archive of source-code make && make test && make install
 bash 'install openresty' do
   user 'root'
     cwd ::File.dirname(openresty_src_filename)
     code <<-EOH
     mkdir -p #{openresty_extract_path}
     tar xzf #{openresty_src_filename} -C #{openresty_extract_path}
-    cd openresty-#{node['openresty']['ver_num']}/#{::File.basename(node[:openresty][:file_name], '.tar.gz')} 
+    cd openresty-#{node[:openresty][:ver_num]}/#{::File.basename(node[:openresty][:file_name], '.tar.gz')} 
     cd luajit-#{node['nginx']['luajit']['version']}/LuaJIT-#{node['nginx']['luajit']['version']}
     ./configure --with-luajit
     make
