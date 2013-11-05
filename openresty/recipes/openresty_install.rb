@@ -36,6 +36,8 @@ bash 'install openresty' do
     tar -zxf #{node[:openresty][:file_name]}
     cd #{::File.basename(node[:openresty][:file_name], '.tar.gz')} 
     ./configure --with-luajit
+    			--with-cc-opt="-I/usr/local/Cellar/pcre/8.21/include" \
+            	--with-ld-opt="-L/usr/local/Cellar/pcre/8.21/lib"
     make && make install
   EOH
 end
