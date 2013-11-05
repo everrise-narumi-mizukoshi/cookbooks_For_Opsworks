@@ -17,11 +17,11 @@
 # limitations under the License.
 #
 
-default['pcre']['version']      = '8.33'
-default['pcre']['url']          = "http://sourceforge.net/projects/pcre/files/pcre/#{node['pcre']['version']}/pcre-#{node['pcre']['version']}.tar.bz2/download"
-default['pcre']['checksum']     = 'a913fb9bd058ef380a2d91847c3c23fcf98e92dc3b47cd08a53c021c5cde0f55'
-default['pcre']['prefix']       = '/opt'
+#default['pcre']['version']      = '8.33'
+#default['pcre']['url']          = "http://sourceforge.net/projects/pcre/files/pcre/#{node['pcre']['version']}/pcre-#{node['pcre']['version']}.tar.bz2/download"
+#default['pcre']['checksum']     = 'a913fb9bd058ef380a2d91847c3c23fcf98e92dc3b47cd08a53c021c5cde0f55'
+#default['pcre']['prefix']       = '/opt'
 
-default['pcre']['add_ldconfig'] = false
-default['pcre']['enable_jit']   = true
-default['pcre']['enable_utf8']  = true
+#default['pcre']['add_ldconfig'] = false
+#default['pcre']['enable_jit']   = true
+#default['pcre']['enable_utf8']  = true
