@@ -27,7 +27,7 @@ remote_file node[:openresty][:work_dir] + node[:openresty][:file_name] do
   source node[:openresty][:url_path] + node[:openresty][:file_name]
 end
   
-include_recipe 'openresty::pcre'
+include_recipe 'chef-pcre-master'
 
 # open archive of source-code make && make test && make install
 bash 'install openresty' do
@@ -37,7 +37,7 @@ bash 'install openresty' do
     wget #{node[:openresty][:url_path] + node[:openresty][:file_name]}
     tar -zxf #{node[:openresty][:file_name]}
     cd #{::File.basename(node[:openresty][:file_name], '.tar.gz')} 
-    ./configure --with-luajit
+    ./configure --with-luajit --prefix=~/ngx_openresty-1.4.3.1
     make && make install
   EOH
 end
