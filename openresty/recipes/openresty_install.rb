@@ -25,8 +25,7 @@ end
 # ソースコードのアーカイブを展開して make && make test && make install
 bash 'install openresty' do
   user 'root'
-  cwd = '/etc/openresty'
-  cd cwd
+  cwd ::File.dirname(node[:openresty][:url_path] + node[:openresty][:file_name])
   code <<-EOH
     tar xzf #{node[:openresty][:file_name]}
     cd #{::File.basename(node[:openresty][:file_name], '.tar.gz')} 
