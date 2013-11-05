@@ -35,7 +35,6 @@ bash 'install openresty' do
     mkdir -p #{openresty_extract_path}
     tar xzf #{openresty_src_filename} -C #{openresty_extract_path}
     cd openresty-#{node[:openresty][:ver_num]}/#{::File.basename(node[:openresty][:file_name], '.tar.gz')} 
-    cd luajit-#{node['nginx']['luajit']['version']}/LuaJIT-#{node['nginx']['luajit']['version']}
     ./configure --with-luajit
     make
     make install
