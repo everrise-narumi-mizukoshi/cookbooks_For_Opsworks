@@ -8,6 +8,7 @@ directory node[:openresty][:work_dir] do
   owner 'root'
   group 'root'
   mode '0755'
+  action :create
 end
 
 #directory node[:openresty][:log_dir] do
