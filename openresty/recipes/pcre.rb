@@ -4,7 +4,6 @@
 #
 
 package "pcre" do
-  version  "8.33"
   action   :install
 end
 
