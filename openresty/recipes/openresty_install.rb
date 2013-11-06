@@ -51,8 +51,8 @@ template "nginx.conf" do
 end
 
 # start service
-service 'nginx' do
-   action [ :enable, :start ]
-   supports :status => true, :restart => true, :reload => true
-end
+#service 'nginx' do
+#   action [ :enable, :start ]
+#   supports :status => true, :restart => true, :reload => true
+#end
     
