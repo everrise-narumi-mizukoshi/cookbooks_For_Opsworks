@@ -9,7 +9,7 @@ package "tcl"
 bin = "/usr/local/bin/redis-server"
 version  = node[:redis][:version]
 file = "redis-#{version}"
-url = "https://redis.googlecode.com/files/redis-#{version}.tar.gz"
+url = "http://download.redis.io/releases//redis-#{version}.tar.gz"
 installed_version = `#{bin} -v 2>&1`.chomp.split(/\s/)[2].sub("v=","")
 log "installed version: #{installed_version}"
 do_install = ( version != installed_version )
