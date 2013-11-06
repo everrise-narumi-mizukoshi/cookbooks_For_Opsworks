@@ -42,8 +42,16 @@ bash 'install openresty' do
   EOH
 end
 
+template "nginx.conf" do
+  path "#{node[:openresty][:work_dir]}/nginx.conf"
+  source "nginx.conf.erb"
+  owner "root"
+  group "root"
+  mode 0644
+end
+
 # start service
-service 'openresty' do
+service 'nginx' do
    action [ :enable, :start ]
    supports :status => true, :restart => true, :reload => true
 end
