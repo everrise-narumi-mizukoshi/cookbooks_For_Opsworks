@@ -39,11 +39,14 @@ bash 'install openresty' do
     cd #{::File.basename(node[:openresty][:file_name], '.tar.gz')} 
     ./configure --with-luajit --prefix=~/ngx_openresty-1.4.3.1
     make && make install
+    mkdir conf
+    mkdir logs
   EOH
 end
 
+
 template "nginx.conf" do
-  path "#{node[:openresty][:work_dir]}/nginx.conf"
+  path "ngx_openresty-1.4.3.1/conf/nginx.conf"
   source "nginx.conf.erb"
   owner "root"
   group "root"
