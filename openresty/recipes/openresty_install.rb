@@ -44,7 +44,7 @@ end
 
 # start service
 service 'openresty' do
-# supports :status => true, :restart => true, :reload => true
-  action :start
+   action [ :enable, :start ]
+   supports :status => true, :restart => true, :reload => true
 end
     
