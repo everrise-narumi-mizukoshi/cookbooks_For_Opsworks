@@ -53,9 +53,4 @@ template "nginx.conf" do
   mode 0644
 end
 
-# start service
-#service 'nginx' do
-#   action [ :enable, :start ]
-#   supports :status => true, :restart => true, :reload => true
-#end
     
