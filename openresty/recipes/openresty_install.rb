@@ -5,6 +5,7 @@
 #
 
 include_recipe 'openresty::pcre'
+include_recipe 'openresty::ab'
 
 openresty_src_filename = ::File.basename(node[:openresty][:file_name])
 openresty_src_filepath = "#{Chef::Config['file_cache_path']}/#{openresty_src_filename}"
