@@ -5,6 +5,7 @@
 
 package "pcre" do
   action   :install
+  version "8.21-7.5"
 end
 
 package "pcre-devel" do

@@ -37,8 +37,9 @@ bash 'install openresty' do
     wget #{node[:openresty][:url_path] + node[:openresty][:file_name]}
     tar -zxf #{node[:openresty][:file_name]}
     cd #{::File.basename(node[:openresty][:file_name], '.tar.gz')} 
-    ./configure --with-luajit --prefix=~/ngx_openresty-1.4.3.1
-    make && make install
+    ./configure --with-luajit --prefix=/usr/local/nginx
+    make
+    make install
     mkdir conf
     mkdir logs
   EOH
