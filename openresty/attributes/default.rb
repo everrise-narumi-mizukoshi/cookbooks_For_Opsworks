@@ -8,7 +8,7 @@ default[:openresty][:ver_num] = '1.4.3.1'
 default[:openresty][:url_path] = 'http://openresty.org/download/'
 default[:openresty][:file_name] = 'ngx_openresty-1.4.3.1.tar.gz'
 
-# redis-server install path
+# openresty-server install path
 #default[:openresty][:server_install_path] = '/usr/local/bin/openresty-server'
 
-
+default[:openresty][:nginx_port] = '80'
