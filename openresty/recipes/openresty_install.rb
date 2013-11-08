@@ -46,9 +46,8 @@ bash 'install openresty' do
   EOH
 end
 
-
 template "nginx.conf" do
-  path "ngx_openresty-1.4.3.1/conf/nginx.conf"
+  path "/usr/local/nginx/nginx/conf/nginx.conf"
   source "nginx.conf.erb"
   owner "root"
   group "root"
